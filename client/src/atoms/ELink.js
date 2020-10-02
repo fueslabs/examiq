@@ -8,8 +8,9 @@ const useStyles = makeStyles((theme) => ({
   },
   link: {
     width: theme.spacing(6),
-    height: theme.spacing(4),
-    fontSize: '14px',
+    height: theme.spacing(3),
+    fontSize: '12px',
+    fontWeight: 300,
     borderColor: '#6d6e70',
   },
 }));

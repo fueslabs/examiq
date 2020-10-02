@@ -7,8 +7,22 @@
   pointer-events: none;
 }
 .jobList {
-  padding-top: 10rem;
-  min-height: 200vh;
+  padding: 10rem 2rem;
+  min-height: 80vh;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #f6f8fa;
+  color: #333333;
+}
+
+.jobList h4 {
+  text-align: left;
+  display: flex;
+}
+
+.jobList iframe {
+  margin: 0 auto;
 }
 
 @media (prefers-reduced-motion: no-preference) {

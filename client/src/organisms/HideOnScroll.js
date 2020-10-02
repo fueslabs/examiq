@@ -14,7 +14,7 @@ function HideOnScrollBar(props) {
   const trigger = useScrollTrigger();
 
   return (
-    <Slide appear={false} direction="down" in={!trigger} timeout={500}>
+    <Slide appear={false} direction="down" in={!trigger} timeout={100}>
       {children}
     </Slide>
   );
