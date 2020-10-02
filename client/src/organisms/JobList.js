@@ -1,9 +1,8 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
-import Job from '../molecules';
+// import Job from '../molecules';
 
 const JobList = (props) => {
-    const { jobs } = props;
     return (
         <div className="jobList">
             <Typography
