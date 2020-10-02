@@ -5,7 +5,7 @@ import Slide from '@material-ui/core/Slide';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
-import Logo from '../atoms';
+import { Logo, ELink } from '../atoms';
 
 function HideOnScrollBar(props) {
   const { children } = props;
@@ -15,7 +15,7 @@ function HideOnScrollBar(props) {
   const trigger = useScrollTrigger();
 
   return (
-    <Slide appear={false} direction="down" in={!trigger}>
+    <Slide appear={false} direction="down" in={!trigger} timeout={500}>
       {children}
     </Slide>
   );
@@ -23,14 +23,20 @@ function HideOnScrollBar(props) {
 
 
 const useStyles = makeStyles((theme) => ({
+    root: {
+      transition: 'all 2s ease-out',
+    },
     bar: {
       backgroundColor: '#f6f8fa',
       color: '#333333',
+      transition: 'all 2s ease-out',
     },
     links: {
       flexGrow: 1,
       display: 'flex',
-      justifyContent: 'flex-end'
+      justifyContent: 'flex-end',
+      columnGap: theme.spacing(1),
+      marginRight: theme.spacing(2),
     }
 }));
 
@@ -38,20 +44,17 @@ const useStyles = makeStyles((theme) => ({
 const HideOnScroll = (props) => {
     const classes = useStyles();
     return (
-        <HideOnScrollBar {...props}>
+        <HideOnScrollBar className={classes.root} {...props}>
             <AppBar className={classes.bar}>
                 <Toolbar>
                     <Logo name={'ExamIQ'} />
                     <div className={classes.links}>
-                      <Button color="inherit">home</Button>
-                      <Button color="inherit">about</Button>
-                      <Button color="inherit">teachers</Button>
-                      <Button color="inherit">blog</Button>
-                      <Button color="inherit">apply</Button>
-                      <Button color="inherit">contact</Button>
-                      <Button color="inherit">faq</Button>
+                      <ELink name="home" />
+                      <ELink name="about" />
+                      <ELink name="blog" />
+                      <ELink name="faq" />
                     </div>
-                    <Button color="inherit">login</Button>
+                    <ELink name="login" />
                 </Toolbar>
             </AppBar>
         </HideOnScrollBar>

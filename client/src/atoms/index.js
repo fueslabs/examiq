@@ -1,3 +1,7 @@
 import Logo from './Logo';
+import ELink from './ELink';
 
-export default Logo;
+export {
+  Logo,
+  ELink,
+};
