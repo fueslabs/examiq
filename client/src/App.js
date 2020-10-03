@@ -1,4 +1,5 @@
 import React from 'react';
+import { Auth0Provider } from '@auth0/auth0-react';
 import { ThemeProvider } from '@material-ui/styles';
 
 import { theme } from './lib/theme';
@@ -16,10 +17,16 @@ import { HideOnScroll, PageHeader } from './organisms';
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <HideOnScroll />
-      <PageHeader />
-    </ThemeProvider>
+    <Auth0Provider
+      domain="hookorg.auth0.com"
+      clientId="vBZIvz1tVc0v5y07Wbo8n9jrblSEGcqF"
+      redirectUri={window.location.origin}
+    >
+      <ThemeProvider theme={theme}>
+        <HideOnScroll />
+        <PageHeader />
+      </ThemeProvider>
+    </Auth0Provider>
   );
 }
 

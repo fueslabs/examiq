@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 
 const ELink = (props) => {
-  const { name, login, filled } = props;
+  const { name, login, filled, action } = props;
   const useStyles = makeStyles((theme) => ({
     root: {
   
@@ -29,6 +29,7 @@ const ELink = (props) => {
         variant={login? "outlined": filled? "contained": ""} 
         color="inherit"
         className={classes.link}
+        onClick={() => action()}
       >
         {name}
       </Button>

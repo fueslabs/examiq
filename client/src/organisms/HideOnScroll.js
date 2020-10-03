@@ -1,4 +1,5 @@
 import React from 'react';
+import { useAuth0 } from '@auth0/auth0-react';
 import { makeStyles } from '@material-ui/core/styles';
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 import Slide from '@material-ui/core/Slide';
@@ -33,11 +34,18 @@ const useStyles = makeStyles((theme) => ({
       justifyContent: 'flex-end',
       columnGap: theme.spacing(1),
       marginRight: theme.spacing(2),
+    },
+    user: {
+      borderRadius: '50%',
+      marginRight: theme.spacing(1),
+      height: '32px',
+      width: 'auto',
     }
 }));
 
 
 const HideOnScroll = (props) => {
+    const { loginWithRedirect, logout, user, isAuthenticated } = useAuth0();
     const classes = useStyles();
     const isWeb = useMediaQuery('(min-width:600px)');
     return (
@@ -55,7 +63,15 @@ const HideOnScroll = (props) => {
                         </>
                       )}
                     </div>
-                    <ELink name="login" login/>
+                    {isAuthenticated && (
+                      <>
+                      <img src={user.picture} alt={user.name} className={classes.user} />
+                      <ELink name="logout" login action={() => logout()} />
+                      </>
+                    )}
+                    {!isAuthenticated && (
+                      <ELink name="login" login action={() => loginWithRedirect()} />
+                    )}
                 </Toolbar>
             </AppBar>
         </HideOnScrollBar>
