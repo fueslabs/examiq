@@ -1,12 +1,13 @@
 import React from 'react';
 import { Auth0Provider } from '@auth0/auth0-react';
 import { ThemeProvider } from '@material-ui/styles';
-
+import { Router } from "@reach/router"
 import { theme } from './lib/theme';
 
 import './App.css';
 
-import { HideOnScroll, PageHeader } from './organisms';
+import { HideOnScroll } from './organisms';
+import { Home, About } from './templates';
 
 
 // const mock = [
@@ -18,13 +19,16 @@ import { HideOnScroll, PageHeader } from './organisms';
 function App() {
   return (
     <Auth0Provider
-      domain="hookorg.auth0.com"
-      clientId="vBZIvz1tVc0v5y07Wbo8n9jrblSEGcqF"
+      domain="examiq.us.auth0.com"
+      clientId="6X4KUOXoLsWi0DhyBmjFaQPmENLKSnhW"
       redirectUri={window.location.origin}
     >
       <ThemeProvider theme={theme}>
         <HideOnScroll />
-        <PageHeader />
+        <Router>
+          <Home path="/" />
+          <About path="about" />
+        </Router>
       </ThemeProvider>
     </Auth0Provider>
   );

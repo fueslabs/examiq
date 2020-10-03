@@ -5,6 +5,7 @@ import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 import Slide from '@material-ui/core/Slide';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { Logo, ELink } from '../atoms';
 
@@ -32,7 +33,6 @@ const useStyles = makeStyles((theme) => ({
       flexGrow: 1,
       display: 'flex',
       justifyContent: 'flex-end',
-      columnGap: theme.spacing(1),
       marginRight: theme.spacing(2),
     },
     user: {
@@ -40,7 +40,11 @@ const useStyles = makeStyles((theme) => ({
       marginRight: theme.spacing(1),
       height: '32px',
       width: 'auto',
-    }
+    },
+    userName: {
+      marginRight: theme.spacing(2),
+      fontSize: '12px',
+    },
 }));
 
 
@@ -56,8 +60,8 @@ const HideOnScroll = (props) => {
                     <div className={classes.links}>
                       {isWeb && (
                         <>
-                        <ELink name="home" />
-                        <ELink name="about" />
+                        <ELink name="home" routeTo="/" />
+                        <ELink name="about" routeTo="about" />
                         <ELink name="blog" />
                         <ELink name="faq" />
                         </>
@@ -66,6 +70,7 @@ const HideOnScroll = (props) => {
                     {isAuthenticated && (
                       <>
                       <img src={user.picture} alt={user.name} className={classes.user} />
+                      <Typography variant="overline" className={classes.userName}>welcome, {user.name.split(' ')[0]}</Typography>
                       <ELink name="logout" login action={() => logout()} />
                       </>
                     )}

@@ -2,10 +2,17 @@
 
 > [Atomic Interface Design](https://bradfrost.com/blog/post/atomic-web-design/)
 
-### Molcules (src/components)
+### Atoms (src/atoms)
+### Molcules (src/molecules)
 ### Organisms (src/organisms)
 ### Templates (src/templates)
-### Pages (src/pages) 
+
+### Technologies
+
+[Material-UI](https://material-ui.com/)
+[Reach Router](https://reach.tech/router/)
+[Auth0](https://auth0.com/)
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
