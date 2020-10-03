@@ -1,7 +1,11 @@
 import React from 'react';
+import { ThemeProvider } from '@material-ui/styles';
+
+import { theme } from './lib/theme';
+
 import './App.css';
 
-import { JobList, HideOnScroll } from './organisms';
+import { HideOnScroll, PageHeader } from './organisms';
 
 
 // const mock = [
@@ -12,10 +16,10 @@ import { JobList, HideOnScroll } from './organisms';
 
 function App() {
   return (
-    <div className="App">
+    <ThemeProvider theme={theme}>
       <HideOnScroll />
-      <JobList />
-    </div>
+      <PageHeader />
+    </ThemeProvider>
   );
 }
 

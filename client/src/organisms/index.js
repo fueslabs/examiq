@@ -1,6 +1,6 @@
 import HideOnScroll from './HideOnScroll';
-import JobList from './JobList';
+import PageHeader from './PageHeader';
 export {
     HideOnScroll,
-    JobList,
+    PageHeader,
 };

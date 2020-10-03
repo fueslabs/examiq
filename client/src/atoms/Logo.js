@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
   },
   logo: {
-    height: '44px',
+    height: '36px',
     width: 'auto',
   },
   title: {

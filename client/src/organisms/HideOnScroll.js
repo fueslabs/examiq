@@ -4,6 +4,7 @@ import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 import Slide from '@material-ui/core/Slide';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { Logo, ELink } from '../atoms';
 
 function HideOnScrollBar(props) {
@@ -23,12 +24,8 @@ function HideOnScrollBar(props) {
 
 const useStyles = makeStyles((theme) => ({
     root: {
-      transition: 'all 2s ease-out',
     },
     bar: {
-      backgroundColor: '#f6f8fa',
-      color: '#333333',
-      transition: 'all 2s ease-out',
     },
     links: {
       flexGrow: 1,
@@ -42,18 +39,23 @@ const useStyles = makeStyles((theme) => ({
 
 const HideOnScroll = (props) => {
     const classes = useStyles();
+    const isWeb = useMediaQuery('(min-width:600px)');
     return (
         <HideOnScrollBar className={classes.root} {...props}>
             <AppBar className={classes.bar}>
                 <Toolbar>
                     <Logo name={'ExamIQ'} />
                     <div className={classes.links}>
-                      <ELink name="home" />
-                      <ELink name="about" />
-                      <ELink name="blog" />
-                      <ELink name="faq" />
+                      {isWeb && (
+                        <>
+                        <ELink name="home" />
+                        <ELink name="about" />
+                        <ELink name="blog" />
+                        <ELink name="faq" />
+                        </>
+                      )}
                     </div>
-                    <ELink name="login" />
+                    <ELink name="login" login/>
                 </Toolbar>
             </AppBar>
         </HideOnScrollBar>
