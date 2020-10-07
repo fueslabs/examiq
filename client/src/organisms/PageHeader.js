@@ -22,6 +22,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(2),
     display: 'flex',
     columnGap: theme.spacing(2),
+    '-webkit-column-gap': theme.spacing(2),
   }
 }));
 
