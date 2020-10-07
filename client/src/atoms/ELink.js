@@ -13,8 +13,10 @@ const ELink = (props) => {
   
     },
     link: {
-      width: theme.spacing(10),
-      height: theme.spacing(3),
+      width: theme.spacing(12),
+      height: theme.spacing(4),
+      alignItems: 'center',
+      justifyContent: 'center',
       fontSize: '14px',
       fontWeight: 500,
       borderColor: '#6d6e70',
