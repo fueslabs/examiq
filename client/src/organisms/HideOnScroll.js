@@ -26,6 +26,7 @@ function HideOnScrollBar(props) {
 
 const useStyles = makeStyles((theme) => ({
     root: {
+      fontFamily: 'IBM Plex Mono, monospace',
     },
     bar: {
     },
@@ -56,13 +57,16 @@ const HideOnScroll = (props) => {
         <HideOnScrollBar className={classes.root} {...props}>
             <AppBar className={classes.bar}>
                 <Toolbar>
-                    <Logo name={'ExamIQ'} />
+                    <Logo name={isWeb?'examiq':''} />
                     <div className={classes.links}>
                       {isWeb && (
                         <>
-                        <ELink name="home" routeTo="/" />
+                        {/* <ELink name="home" routeTo="/" /> */}
                         <ELink name="about" routeTo="about" />
+                        <ELink name="teachers" />
                         <ELink name="blog" />
+                        <ELink name="apply" />
+                        <ELink name="contact" />
                         <ELink name="faq" />
                         </>
                       )}

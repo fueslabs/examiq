@@ -17,13 +17,14 @@ const ELink = (props) => {
       height: theme.spacing(4),
       alignItems: 'center',
       justifyContent: 'center',
+      fontFamily: 'IBM Plex Mono, monospace',
       fontSize: '14px',
       fontWeight: 500,
       borderColor: '#6d6e70',
-      color: filled? '#333333': theme.palette.primary.contrastText,
+      color: filled? '#333333': theme.palette.secondary.light,
       textDecoration: 'none',
       '&:hover': {
-        color: login ? theme.palette.secondary.light.contrastText: theme.palette.secondary.light,
+        color: login ? theme.palette.primary.light: theme.palette.primary.light.contrastText,
         borderColor: theme.palette.secondary.light,
         backgroundColor: login ? theme.palette.secondary.light: '',
       },
@@ -31,9 +32,6 @@ const ELink = (props) => {
     reachLink: {
       color: theme.palette.primary.contrastText,
       textDecoration: 'none',
-      '&:hover': {
-        color: theme.palette.secondary.light,
-      },
     },
     active: {
       color: theme.palette.secondary.light,

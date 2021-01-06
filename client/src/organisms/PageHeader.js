@@ -1,22 +1,25 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
+import Grid from '@material-ui/core/Grid';
 // import Job from '../molecules';
 import { ELink } from '../atoms';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    padding: `${theme.spacing(0.75)}rem ${theme.spacing(0.25)}rem`,
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'flex-start',
-    alignItems: 'center',
+    padding: `${theme.spacing(1)}rem ${theme.spacing(2)}rem`,
     minHeight: '150vh',
     backgroundColor: theme.palette.primary.dark,
-    color: theme.palette.primary.contrastText,
+    color: theme.palette.secondary.light,
   },
   title: {
     marginBottom: theme.spacing(4),
+    fontFamily: 'IBM Plex Mono, monospace',
+    fontWeight: 700,
+    fontSize: 72,
+  },
+  body: {
+    fontFamily: 'IBM Plex Mono, monospace',
   },
   rowGrid: {
     marginTop: theme.spacing(2),
@@ -27,23 +30,27 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const PageHeader = (props) => {
-  const { title } = props;
+  const { title, imgSrc } = props;
   const classes = useStyles();
   return (
-    <div className={classes.root}>
-      <Typography
-        variant="h4"
-        className={classes.title}
-      >
-        {title}
-      </Typography>
-      <iframe src="https://ghbtns.com/github-btn.html?user=fuesco&repo=examiq&type=star&count=true&size=small" frameborder="0" scrolling="0" width="80" height="30" title="GitHub"></iframe>
-      <Typography variant="body1">Open-source AI for converting notes to exams in minutes.</Typography>
-      <div className={classes.rowGrid}>
-        <ELink name="source" login href="https://github.com/fuesco/examiq/" target="_blank" />
-        <ELink name="reviews" filled/>
-      </div>
-    </div>
+    <Grid container justify="center" className={classes.root}>
+      <Grid item xs={12} lg={4}>
+        <Typography
+          variant="h2"
+          className={classes.title}
+        >
+          {title}
+        </Typography>
+        <Typography variant="body1" className={classes.body}>Convert notes to exams in minutes.</Typography>
+        <div className={classes.rowGrid}>
+          <ELink name="source" login href="https://github.com/fuesco/examiq/" target="_blank" />
+          <ELink name="reviews" filled/>
+        </div>
+      </Grid>
+      <Grid item xs={12} lg={8}>
+        <img src={imgSrc} alt="banner" width="100%" height="355px"/>
+      </Grid>
+    </Grid>
   );
 }
   

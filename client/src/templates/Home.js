@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { PageHeader } from '../organisms';
+import { Layout, PageHeader } from '../organisms';
+import indexBannerSvg from '../static/index-banner.svg';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -10,9 +11,9 @@ const useStyles = makeStyles((theme) => ({
 const Home = (props) => {
   const classes = useStyles();
   return (
-    <div className={classes.root}>
-      <PageHeader title={'ExamIQ: Intelligent Question Generator'} />
-    </div>
+    <Layout className={classes.root}>
+      <PageHeader title={'Examiq'} imgSrc={indexBannerSvg} />
+    </Layout>
   );
 }
   
