@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
   },
   name: {
     fontFamily: 'IBM Plex Mono, monospace',
-    fontSize: 18,
+    fontSize: 20,
     fontWeight: 700,
     marginLeft: theme.spacing(1),
     textTransform: 'capitalize',

@@ -41,14 +41,14 @@ const PageHeader = (props) => {
         >
           {title}
         </Typography>
-        <Typography variant="body1" className={classes.body}>Convert notes to exams in minutes.</Typography>
+        <Typography variant="body1" className={classes.body}>Open source AI that lets you convert notes to exams in minutes.</Typography>
         <div className={classes.rowGrid}>
-          <ELink name="source" login href="https://github.com/fuesco/examiq/" target="_blank" />
+          <ELink name="source" login href="https://github.com/fueslabs/examiq/" target="_blank" rel="noopener"/>
           <ELink name="reviews" filled/>
         </div>
       </Grid>
       <Grid item xs={12} lg={8}>
-        <img src={imgSrc} alt="banner" width="100%" height="355px"/>
+        <img src={imgSrc} alt="banner" width="100%" height="555px"/>
       </Grid>
     </Grid>
   );
