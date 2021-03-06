@@ -126,7 +126,7 @@ const PageHeader = (props) => {
         </Typography>
         <Typography variant="body1" className={classes.body}>AI that lets you convert notes to exams in minutes.</Typography>
         <Typography variant="overline" className={classes.monoText}>get early access</Typography>
-        <form method="POST" name="waitlist" noValidate autoComplete="off" onSubmit={(e) => submitWaitlist(e)}>
+        <form method="POST" name="waitlist" noValidate autoComplete="off" data-netlify="true">
           <TextField 
             id="waitlist-form" 
             className={classes.waitlistRoot}
