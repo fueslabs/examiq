@@ -98,13 +98,14 @@ const PageHeader = (props) => {
 
   const submitWaitlist = (e) => {
     e.preventDefault();
-    fetch("/", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: encode({ "form-name": "waitlist", ...state })
-    })
-      .then(() => setIsSubmitted(!isSubmitted))
-      .catch(error => alert(error));
+    setIsSubmitted(!isSubmitted);
+    // fetch("/", {
+    //   method: "POST",
+    //   headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    //   body: encode({ "form-name": "waitlist", ...state })
+    // })
+    //   .then(() => )
+    //   .catch(error => alert(error));
   }
 
   const handleClose = (event, reason) => {
@@ -126,7 +127,7 @@ const PageHeader = (props) => {
         </Typography>
         <Typography variant="body1" className={classes.body}>AI that lets you convert notes to exams in minutes.</Typography>
         <Typography variant="overline" className={classes.monoText}>get early access</Typography>
-        <form method="POST" name="waitlist" noValidate autoComplete="off" data-netlify="true">
+        <form method="POST" name="waitlist" noValidate autoComplete="off" data-netlify="true" data-netlify-honeypot="bot-field">
           <TextField 
             id="waitlist-form" 
             className={classes.waitlistRoot}
@@ -147,6 +148,7 @@ const PageHeader = (props) => {
               )
             }}
           />
+          <div data-netlify-recaptcha="true" class="form-row"></div>
           <WaitlistSnackbar open={isSubmitted} handleClose={handleClose} />
         </form>
         <div className={classes.rowGrid}>
