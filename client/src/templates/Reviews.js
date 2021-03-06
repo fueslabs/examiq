@@ -7,13 +7,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const About = (props) => {
+const Reviews = (props) => {
   const classes = useStyles();
   return (
     <Layout className={classes.root}>
-      <PageHeader title={'About ExamIQ'} imgSrc={indexBannerSvg} />
+      <PageHeader title={'Reviews'} imgSrc={indexBannerSvg} />
     </Layout>
   );
 }
   
-export default About;
+export default Reviews;

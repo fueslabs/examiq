@@ -7,7 +7,7 @@ import { theme } from './lib/theme';
 import './App.css';
 
 import { HideOnScroll } from './organisms';
-import { Home, About } from './templates';
+import { Home, About, Reviews } from './templates';
 
 
 // const mock = [
@@ -28,6 +28,7 @@ function App() {
         <Router>
           <Home path="/" />
           <About path="about" />
+          <Reviews path="reviews" />
         </Router>
       </ThemeProvider>
     </Auth0Provider>

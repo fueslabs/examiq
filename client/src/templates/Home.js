@@ -12,7 +12,7 @@ const Home = (props) => {
   const classes = useStyles();
   return (
     <Layout className={classes.root}>
-      <PageHeader title={'Examiq'} imgSrc={indexBannerSvg} />
+      <PageHeader title={'ExamIQ'} imgSrc={indexBannerSvg} />
     </Layout>
   );
 }

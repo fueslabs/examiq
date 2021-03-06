@@ -21,19 +21,20 @@ const ELink = (props) => {
       fontSize: '14px',
       fontWeight: 500,
       borderColor: '#6d6e70',
-      color: filled? '#333333': theme.palette.secondary.light,
+      backgroundColor: filled? theme.palette.secondary.light: 'transparent',
+      color: filled? '#111111': theme.palette.secondary.light,
       textDecoration: 'none',
       '&:hover': {
         color: login ? theme.palette.primary.light: theme.palette.primary.light.contrastText,
-        borderColor: theme.palette.secondary.light,
-        backgroundColor: login ? theme.palette.secondary.light: '',
+        backgroundColor: login? theme.palette.secondary.light: null
       },
     },
     reachLink: {
-      color: theme.palette.primary.contrastText,
       textDecoration: 'none',
+      color: filled? theme.palette.primary.light : theme.palette.secondary.light,
     },
     active: {
+      fontWeight: 700,
       color: theme.palette.secondary.light,
       textDecoration: 'none',
     }

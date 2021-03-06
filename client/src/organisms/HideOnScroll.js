@@ -43,8 +43,9 @@ const useStyles = makeStyles((theme) => ({
       width: 'auto',
     },
     userName: {
+      fontFamily: 'IBM Plex Mono, monospace',
       marginRight: theme.spacing(2),
-      fontSize: '12px',
+      fontSize: '15px',
     },
 }));
 
@@ -57,7 +58,7 @@ const HideOnScroll = (props) => {
         <HideOnScrollBar className={classes.root} {...props}>
             <AppBar className={classes.bar}>
                 <Toolbar>
-                    <Logo name={isWeb?'examiq':''} />
+                    <Logo name={isWeb?'ExamIQ':''} />
                     <div className={classes.links}>
                       {isWeb && (
                         <>
@@ -74,7 +75,7 @@ const HideOnScroll = (props) => {
                     {isAuthenticated && (
                       <>
                       <img src={user.picture} alt={user.name} className={classes.user} />
-                      <Typography variant="overline" className={classes.userName}>welcome, {user.name.split(' ')[0]}</Typography>
+                      <Typography variant="overline" className={classes.userName}>{user.name.split(' ')[0]}</Typography>
                       <ELink name="logout" login action={() => logout()} />
                       </>
                     )}
