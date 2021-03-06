@@ -87,33 +87,30 @@ const WaitlistSnackbar = (props) => {
 const PageHeader = (props) => {
   const { title, imgSrc } = props;
   const classes = useStyles();
-  // boop
-  // const state = useState();
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [email, setEmail] = useState('');
 
-  // const encode = (data) => {
-  //   return Object.keys(data)
-  //       .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-  //       .join("&");
-  // }
 
-  const submitWaitlist = (e) => {
+  const submitWaitlist = async (e) => {
     e.preventDefault();
-    setIsSubmitted(!isSubmitted);
-    // fetch("/", {
-    //   method: "POST",
-    //   headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    //   body: encode({ "form-name": "waitlist", ...state })
-    // })
-    //   .then(() => )
-    //   .catch(error => alert(error));
+    try {
+      await fetch('/api/waitlist', {
+        method: 'POST',
+        body: JSON.stringify({
+          'Email': email,
+        }),
+      });
+      setIsSubmitted(!isSubmitted);
+      setEmail('');
+    } catch (err) {
+      console.error(err);
+    }
   }
 
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') {
       return;
     }
-
     setIsSubmitted(false);
   };
 
@@ -128,11 +125,13 @@ const PageHeader = (props) => {
         </Typography>
         <Typography variant="body1" className={classes.body}>AI that lets you convert notes to exams in minutes.</Typography>
         <Typography variant="overline" className={classes.monoText}>get early access</Typography>
-        <form method="POST" name="waitlist" noValidate autoComplete="off" data-netlify="true" data-netlify-honeypot="bot-field">
+        <form method="POST" name="waitlist" noValidate autoComplete="off" onSubmit={e => submitWaitlist(e)}>
           <TextField 
             id="waitlist-form" 
             className={classes.waitlistRoot}
             placeholder="hello@me.com"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             InputProps={{ 
               className: classes.waitlistForm,
               endAdornment: (
@@ -149,7 +148,6 @@ const PageHeader = (props) => {
               )
             }}
           />
-          <div data-netlify-recaptcha="true" class="form-row"></div>
           <WaitlistSnackbar open={isSubmitted} handleClose={handleClose} />
         </form>
         <div className={classes.rowGrid}>
