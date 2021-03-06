@@ -87,14 +87,15 @@ const WaitlistSnackbar = (props) => {
 const PageHeader = (props) => {
   const { title, imgSrc } = props;
   const classes = useStyles();
-  const state = useState();
+  // boop
+  // const state = useState();
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const encode = (data) => {
-    return Object.keys(data)
-        .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-        .join("&");
-  }
+  // const encode = (data) => {
+  //   return Object.keys(data)
+  //       .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+  //       .join("&");
+  // }
 
   const submitWaitlist = (e) => {
     e.preventDefault();
