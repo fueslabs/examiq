@@ -35,7 +35,7 @@ const ELink = (props) => {
     },
     active: {
       fontWeight: 700,
-      color: theme.palette.secondary.light,
+      color: filled? theme.palette.primary.dark: theme.palette.secondary.light,
       textDecoration: 'none',
     }
   }));

@@ -1,3 +1,6 @@
 import Job from './Job';
-
-export default Job;
+import VideoModal from './VideoModal';
+export {
+  Job,
+  VideoModal,
+};

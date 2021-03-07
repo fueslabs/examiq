@@ -10,6 +10,7 @@ import Send from '@material-ui/icons/SendOutlined';
 import CloseIcon from '@material-ui/icons/CloseOutlined';
 // import Job from '../molecules';
 import { ELink } from '../atoms';
+import { VideoModal } from "../molecules";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -17,6 +18,14 @@ const useStyles = makeStyles((theme) => ({
     minHeight: '150vh',
     backgroundColor: theme.palette.primary.dark,
     color: theme.palette.secondary.light,
+  },
+  titleRoot: {
+    [theme.breakpoints.down('sm')]: {
+      alignItems: 'center',
+    },
+    display: 'flex',
+    flex: 1,
+    flexDirection: 'column',
   },
   title: {
     marginBottom: theme.spacing(4),
@@ -53,6 +62,9 @@ const useStyles = makeStyles((theme) => ({
   snackbarBody: {
     fontFamily: 'IBM Plex Mono, monospace',
   },
+  headerImg: {
+    cursor: 'pointer',
+  },
 }));
 
 const WaitlistSnackbar = (props) => {
@@ -85,10 +97,11 @@ const WaitlistSnackbar = (props) => {
 }
 
 const PageHeader = (props) => {
-  const { title, imgSrc } = props;
+  const { title, imgSrc, showWaitlist } = props;
   const classes = useStyles();
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [email, setEmail] = useState('');
+  const [isVideoOpen, setIsVideoOpen] = useState(false);
 
 
   const submitWaitlist = async (e) => {
@@ -114,9 +127,13 @@ const PageHeader = (props) => {
     setIsSubmitted(false);
   };
 
+  const handleVideoClose = () => {
+    setIsVideoOpen(false);
+  }
+
   return (
     <Grid container justify="center" className={classes.root}>
-      <Grid item xs={12} lg={4}>
+      <Grid item xs={12} lg={4} className={classes.titleRoot}>
         <Typography
           variant="h2"
           className={classes.title}
@@ -124,40 +141,45 @@ const PageHeader = (props) => {
           {title}
         </Typography>
         <Typography variant="body1" className={classes.body}>AI that lets you convert notes to exams in minutes.</Typography>
-        <Typography variant="overline" className={classes.monoText}>get early access</Typography>
-        <form method="POST" name="waitlist" noValidate autoComplete="off" onSubmit={e => submitWaitlist(e)}>
-          <TextField 
-            id="waitlist-form" 
-            className={classes.waitlistRoot}
-            placeholder="hello@me.com"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            InputProps={{ 
-              className: classes.waitlistForm,
-              endAdornment: (
-                <Tooltip title="Submit">
-                  <IconButton
-                    aria-label="send waitlist form"
-                    onClick={(e) => submitWaitlist(e)}
-                    edge="end"
-                    type="submit"
-                  >
-                    <Send className={classes.sendIcon} />
-                  </IconButton>
-                </Tooltip>
-              )
-            }}
-          />
-          <WaitlistSnackbar open={isSubmitted} handleClose={handleClose} />
-        </form>
+        {showWaitlist && (
+          <>
+            <Typography variant="overline" className={classes.monoText}>get early access</Typography>
+            <form method="POST" name="waitlist" noValidate autoComplete="off" onSubmit={e => submitWaitlist(e)}>
+              <TextField 
+                id="waitlist-form" 
+                className={classes.waitlistRoot}
+                placeholder="hello@me.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                InputProps={{ 
+                  className: classes.waitlistForm,
+                  endAdornment: (
+                    <Tooltip title="Submit">
+                      <IconButton
+                        aria-label="send waitlist form"
+                        onClick={(e) => submitWaitlist(e)}
+                        edge="end"
+                        type="submit"
+                      >
+                        <Send className={classes.sendIcon} />
+                      </IconButton>
+                    </Tooltip>
+                  )
+                }}
+              />
+              <WaitlistSnackbar open={isSubmitted} handleClose={handleClose} />
+            </form>
+          </>
+        )}
         <div className={classes.rowGrid}>
           <ELink name="source" login href="https://github.com/fueslabs/examiq/" target="_blank" rel="noopener"/>
-          <ELink name="reviews" routeTo="reviews" filled/>
+          <ELink name="reviews" routeTo="/reviews" filled/>
         </div>
       </Grid>
       <Grid item xs={12} lg={8}>
-        <img src={imgSrc} alt="banner" width="100%" height="555px"/>
+        <img src={imgSrc} alt="banner" width="100%" height="555px" className={classes.headerImg} onClick={() => setIsVideoOpen(true)} />
       </Grid>
+      <VideoModal isOpen={isVideoOpen} onClose={handleVideoClose} videoSrc="//player.vimeo.com/video/32958521?title=0&byline=0&portrait=0&badge=0" />
     </Grid>
   );
 }
