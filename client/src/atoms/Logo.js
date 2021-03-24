@@ -13,12 +13,19 @@ const useStyles = makeStyles((theme) => ({
     height: '36px',
     width: 'auto',
   },
-  name: {
-    fontFamily: 'IBM Plex Mono, monospace',
-    fontSize: 20,
-    fontWeight: 700,
-    marginLeft: theme.spacing(1),
+  brand: {
     color: theme.palette.secondary.light,
+    marginLeft: theme.spacing(1),
+    fontFamily: 'Audiowide, cursive',
+    fontSize: 22,
+    textTransform: 'uppercase',
+  },
+  name: {
+    color: theme.palette.secondary.light,
+    marginLeft: theme.spacing(1),
+    fontFamily: 'IBM Plex Mono, monospace',
+    fontWeight: 700,
+    fontSize: 20,
   }
 }));
 
@@ -28,6 +35,7 @@ const Logo = (props) => {
   return (
       <a href="/" className={classes.root}>
         {/* <img src={logoSrc} alt={name} className={classes.logo} /> */}
+        <Typography variant="body1" className={classes.brand}>{'fues'}</Typography>
         <Typography variant="body1" className={classes.name}>{name}</Typography>
       </a>
     );

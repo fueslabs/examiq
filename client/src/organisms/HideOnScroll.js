@@ -64,11 +64,10 @@ const HideOnScroll = (props) => {
                         <>
                         {/* <ELink name="home" routeTo="/" /> */}
                         <ELink name="about" routeTo="about" />
-                        <ELink name="teachers" />
-                        <ELink name="blog" />
-                        <ELink name="apply" />
-                        <ELink name="contact" />
-                        <ELink name="faq" />
+                        <ELink name="teachers" routeTo="teachers" />
+                        <ELink name="blog" routeTo="blog" />
+                        <ELink name="contact" routeTo="contact" />
+                        <ELink name="faq" routeTo="faq" />
                         </>
                       )}
                     </div>

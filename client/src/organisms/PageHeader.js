@@ -63,6 +63,7 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: 'IBM Plex Mono, monospace',
   },
   headerImg: {
+    marginLeft: theme.spacing(4),
     cursor: 'pointer',
   },
 }));
@@ -140,9 +141,9 @@ const PageHeader = (props) => {
         >
           {title}
         </Typography>
-        <Typography variant="body1" className={classes.body}>AI that lets you convert notes to exams in minutes.</Typography>
         {showWaitlist && (
           <>
+            <Typography variant="body1" className={classes.body}>AI that lets you convert notes to exams, flashcards, and quizzes in minutes.</Typography>
             <Typography variant="overline" className={classes.monoText}>get early access</Typography>
             <form method="POST" name="waitlist" noValidate autoComplete="off" onSubmit={e => submitWaitlist(e)}>
               <TextField 
@@ -172,7 +173,7 @@ const PageHeader = (props) => {
           </>
         )}
         <div className={classes.rowGrid}>
-          <ELink name="source" login href="https://github.com/fueslabs/examiq/" target="_blank" rel="noopener"/>
+          <ELink name="source" login href="https://github.com/fuesvc/examiq/" target="_blank" rel="noopener"/>
           <ELink name="reviews" routeTo="/reviews" filled/>
         </div>
       </Grid>
